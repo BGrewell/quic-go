@@ -120,6 +120,14 @@ func newSentPacketHandler(
 			true, // use Reno
 			tracer,
 		)
+	case congestion.ALGO_LOCO:
+		congestionCtrl = congestion.NewLocoSender(
+			congestion.DefaultClock{},
+			rttStats,
+			initialMaxDatagramSize,
+			true, // use Reno
+			tracer,
+		)
 	default:
 		panic(fmt.Sprintf("Unknown congestion control algorithm %d", congestionAlgo))
 	}

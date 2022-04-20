@@ -8,11 +8,12 @@ func _() {
 	var x [1]struct{}
 	_ = x[ALGO_UNKNOWN-0]
 	_ = x[ALGO_CUBIC-1]
+	_ = x[ALGO_LOCO-2]
 }
 
-const _CongestionAlgo_name = "ALGO_UNKNOWNALGO_CUBIC"
+const _CongestionAlgo_name = "ALGO_UNKNOWNALGO_CUBICALGO_LOCO"
 
-var _CongestionAlgo_index = [...]uint8{0, 12, 22}
+var _CongestionAlgo_index = [...]uint8{0, 12, 22, 31}
 
 func (i CongestionAlgo) String() string {
 	if i < 0 || i >= CongestionAlgo(len(_CongestionAlgo_index)-1) {
@@ -27,4 +28,5 @@ type CongestionAlgo int
 const (
 	ALGO_UNKNOWN CongestionAlgo = iota
 	ALGO_CUBIC
+	ALGO_LOCO
 )
