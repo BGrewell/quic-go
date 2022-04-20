@@ -5,11 +5,11 @@ import (
 	"errors"
 	"time"
 
-	"github.com/lucas-clemente/quic-go/internal/handshake"
-	"github.com/lucas-clemente/quic-go/internal/mocks"
-	"github.com/lucas-clemente/quic-go/internal/protocol"
-	"github.com/lucas-clemente/quic-go/internal/qerr"
-	"github.com/lucas-clemente/quic-go/internal/wire"
+	"github.com/BGrewell/quic-go/internal/handshake"
+	"github.com/BGrewell/quic-go/internal/mocks"
+	"github.com/BGrewell/quic-go/internal/protocol"
+	"github.com/BGrewell/quic-go/internal/qerr"
+	"github.com/BGrewell/quic-go/internal/wire"
 
 	"github.com/golang/mock/gomock"
 

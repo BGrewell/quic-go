@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/lucas-clemente/quic-go/internal/protocol"
-	"github.com/lucas-clemente/quic-go/internal/qerr"
+	"github.com/BGrewell/quic-go/internal/protocol"
+	"github.com/BGrewell/quic-go/internal/qerr"
 )
 
 type frameParser struct {

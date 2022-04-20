@@ -3,14 +3,14 @@ package quic
 import (
 	"context"
 	"errors"
-	"github.com/lucas-clemente/quic-go/internal/congestion"
+	"github.com/BGrewell/quic-go/internal/congestion"
 	"io"
 	"net"
 	"time"
 
-	"github.com/lucas-clemente/quic-go/internal/handshake"
-	"github.com/lucas-clemente/quic-go/internal/protocol"
-	"github.com/lucas-clemente/quic-go/logging"
+	"github.com/BGrewell/quic-go/internal/handshake"
+	"github.com/BGrewell/quic-go/internal/protocol"
+	"github.com/BGrewell/quic-go/logging"
 )
 
 // The StreamID is the ID of a QUIC stream.

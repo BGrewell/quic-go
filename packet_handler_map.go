@@ -15,10 +15,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lucas-clemente/quic-go/internal/protocol"
-	"github.com/lucas-clemente/quic-go/internal/utils"
-	"github.com/lucas-clemente/quic-go/internal/wire"
-	"github.com/lucas-clemente/quic-go/logging"
+	"github.com/BGrewell/quic-go/internal/protocol"
+	"github.com/BGrewell/quic-go/internal/utils"
+	"github.com/BGrewell/quic-go/internal/wire"
+	"github.com/BGrewell/quic-go/logging"
 )
 
 type zeroRTTQueue struct {
@@ -129,7 +129,7 @@ func newPacketHandlerMap(
 				if disable, _ := strconv.ParseBool(os.Getenv("QUIC_GO_DISABLE_RECEIVE_BUFFER_WARNING")); disable {
 					return
 				}
-				log.Printf("%s. See https://github.com/lucas-clemente/quic-go/wiki/UDP-Receive-Buffer-Size for details.", err)
+				log.Printf("%s. See https://github.com/BGrewell/quic-go/wiki/UDP-Receive-Buffer-Size for details.", err)
 			})
 		}
 	}

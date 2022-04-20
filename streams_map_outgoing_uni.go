@@ -8,8 +8,8 @@ import (
 	"context"
 	"sync"
 
-	"github.com/lucas-clemente/quic-go/internal/protocol"
-	"github.com/lucas-clemente/quic-go/internal/wire"
+	"github.com/BGrewell/quic-go/internal/protocol"
+	"github.com/BGrewell/quic-go/internal/wire"
 )
 
 type outgoingUniStreamsMap struct {
