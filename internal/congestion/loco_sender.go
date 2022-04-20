@@ -153,7 +153,7 @@ func (l *locoSender) InSlowStart() bool {
 
 func (l *locoSender) GetCongestionWindow() protocol.ByteCount {
 	// we'll just say it's 10,000 packets in flight
-	return l.maxDatagramSize * 10000
+	return l.maxDatagramSize * 1000000
 }
 
 func (l *locoSender) MaybeExitSlowStart() {
