@@ -2,6 +2,7 @@ package quic
 
 import (
 	"errors"
+	"github.com/lucas-clemente/quic-go/internal/congestion"
 	"time"
 
 	"github.com/lucas-clemente/quic-go/internal/utils"
@@ -99,6 +100,10 @@ func populateConfig(config *Config) *Config {
 	} else if maxIncomingUniStreams < 0 {
 		maxIncomingUniStreams = 0
 	}
+	congestionControlAlgo := config.CongestionControlAlgo
+	if congestionControlAlgo == congestion.ALGO_UNKNOWN {
+		congestionControlAlgo = congestion.ALGO_CUBIC
+	}
 
 	return &Config{
 		Versions:                         versions,
@@ -119,6 +124,7 @@ func populateConfig(config *Config) *Config {
 		EnableDatagrams:                  config.EnableDatagrams,
 		DisablePathMTUDiscovery:          config.DisablePathMTUDiscovery,
 		DisableVersionNegotiationPackets: config.DisableVersionNegotiationPackets,
+		CongestionControlAlgo:            congestionControlAlgo,
 		Tracer:                           config.Tracer,
 	}
 }

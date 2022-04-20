@@ -291,6 +291,7 @@ var newSession = func(
 		s.tracer,
 		s.logger,
 		s.version,
+		s.config.CongestionControlAlgo,
 	)
 	initialStream := newCryptoStream()
 	handshakeStream := newCryptoStream()
@@ -418,6 +419,7 @@ var newClientSession = func(
 		s.tracer,
 		s.logger,
 		s.version,
+		s.config.CongestionControlAlgo,
 	)
 	initialStream := newCryptoStream()
 	handshakeStream := newCryptoStream()

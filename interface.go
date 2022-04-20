@@ -3,6 +3,7 @@ package quic
 import (
 	"context"
 	"errors"
+	"github.com/lucas-clemente/quic-go/internal/congestion"
 	"io"
 	"net"
 	"time"
@@ -299,7 +300,9 @@ type Config struct {
 	// See https://datatracker.ietf.org/doc/draft-ietf-quic-datagram/.
 	// Datagrams will only be available when both peers enable datagram support.
 	EnableDatagrams bool
-	Tracer          logging.Tracer
+	// CongestionControlAlgo is a field to select the congestion control algorithm.
+	CongestionControlAlgo congestion.CongestionAlgo
+	Tracer                logging.Tracer
 }
 
 // ConnectionState records basic details about a QUIC connection

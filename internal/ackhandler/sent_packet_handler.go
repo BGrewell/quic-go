@@ -108,14 +108,21 @@ func newSentPacketHandler(
 	pers protocol.Perspective,
 	tracer logging.ConnectionTracer,
 	logger utils.Logger,
+	congestionAlgo congestion.CongestionAlgo,
 ) *sentPacketHandler {
-	congestion := congestion.NewCubicSender(
-		congestion.DefaultClock{},
-		rttStats,
-		initialMaxDatagramSize,
-		true, // use Reno
-		tracer,
-	)
+	var congestionCtrl congestion.SendAlgorithmWithDebugInfos
+	switch congestionAlgo {
+	case congestion.ALGO_CUBIC:
+		congestionCtrl = congestion.NewCubicSender(
+			congestion.DefaultClock{},
+			rttStats,
+			initialMaxDatagramSize,
+			true, // use Reno
+			tracer,
+		)
+	default:
+		panic(fmt.Sprintf("Unknown congestion control algorithm %d", congestionAlgo))
+	}
 
 	return &sentPacketHandler{
 		peerCompletedAddressValidation: pers == protocol.PerspectiveServer,
@@ -124,7 +131,7 @@ func newSentPacketHandler(
 		handshakePackets:               newPacketNumberSpace(0, false, rttStats),
 		appDataPackets:                 newPacketNumberSpace(0, true, rttStats),
 		rttStats:                       rttStats,
-		congestion:                     congestion,
+		congestion:                     congestionCtrl,
 		perspective:                    pers,
 		tracer:                         tracer,
 		logger:                         logger,
