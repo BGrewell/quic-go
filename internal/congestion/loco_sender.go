@@ -123,7 +123,7 @@ func (l *locoSender) maxCongestionWindow() protocol.ByteCount {
 
 func (l *locoSender) minCongestionWindow() protocol.ByteCount {
 	// we don't allow any less than 1,000 packets in flight!
-	return l.maxDatagramSize * 1000
+	return l.maxDatagramSize * 10000
 }
 
 func (l *locoSender) OnPacketSent(
